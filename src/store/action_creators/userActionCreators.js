@@ -21,8 +21,9 @@ const openSignupModal = () => {
 
 
 // const SIGN_IN = 'SIGN_IN';
-const signIn = () => ({
-    type: types.SIGN_IN
+const signIn = (signedInUser) => ({
+    type: types.SIGN_IN,
+    payload: { signedInUser }
 })
 
 export {logOut, closeSignupModal, openSignupModal, signIn};

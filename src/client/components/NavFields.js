@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   openSignupModal: () => {dispatch(openSignupModal())},
-  signIn: () => {dispatch(signIn())}
+  signIn: (username) => {dispatch(signIn(username))}
 })
 
 class NavFields extends Component {
@@ -31,26 +31,7 @@ class NavFields extends Component {
       .then(res => res.json())
       .then(res => {
         console.log('Response object: ', res);
-        this.props.signIn();
-        if (res.isUser === true) {
-          
-          // this.setState({
-          //   notice: false,
-          //   noticeMessage: "",
-          //   signedIn: true,
-          //   usernameValue: "",
-          //   passwordValue: "",
-          //   user: res.user
-          // });
-          
-          this.props.signIn();
-        } else {
-          // this.setState({
-          //   notice: true,
-          //   noticeMessage:
-          //     "Incorrect username/password, or user doesn't exist. Please try again."
-          // });
-        }
+        this.props.signIn(res.user);
       })
       .catch(err => console.log("Error with signin: ", err));
   }

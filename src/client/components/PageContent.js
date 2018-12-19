@@ -13,10 +13,6 @@ const mapStateToProps = (state) => ({
   entriesToRender: state.entriesToRender
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  updateEntries: entries => dispatch(updateEntries(entries))
-});
-
 class PageContent extends Component {
   constructor(props) {
     super(props);
@@ -27,25 +23,6 @@ class PageContent extends Component {
     //   entryForm: false,
     //   searchValue: '',
     // };
-  }
-
-  componentDidMount() {
-    // console.log('hello');
-    // fetch("http://localhost:8080/")
-    // .then(res => {
-    //   return res.json();
-    // })
-    // .then(res => {
-    //   if(res) {
-    //     // this.setState({
-    //     //   entries: res
-    //     // });
-    //     console.log(res);
-    //     this.props.updateEntries(res);
-    //   }
-    // }).catch(err => {
-    //   console.log("Fetch error. Could not get entries.", err);
-    // });
   }
 
   render() {
@@ -103,6 +80,17 @@ class PageContent extends Component {
           // handleSearchChange={this.handleSearchChange}
           // handleAllEntries={this.handleAllEntries}
         />
+        <CreateEntry
+          // user={this.state.user}
+          // term={this.state.term}
+          // definition={this.state.definition}
+          // createEntry={this.createEntry}
+          // closeCreateEntry={this.closeCreateEntry}
+          // entryForm={this.state.entryForm} 
+          // handleTermChange={this.handleTermChange} 
+          // handleDefinitionChange={this.handleDefinitionChange} 
+          // entries={this.state.entries}
+        />
         <EntryList
           entriesToRender={this.props.entriesToRender}
         />
@@ -111,4 +99,4 @@ class PageContent extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PageContent);
+export default connect(mapStateToProps)(PageContent);

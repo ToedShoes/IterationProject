@@ -1,20 +1,20 @@
 import * as types from "../constants/userActionTypes";
 
-// export const LOG_OUT = 'LOG_OUT';
-// export const OPEN_SIGNUP_MODAL = 'OPEN_SIGN_UP_MODAL';
-// export const CLOSE_SIGNUP_MODAL = 'CLOSE_SIGNUP_MODAL';
-// export const SIGN_IN = 'SIGN_IN';
-
 const initialState = {
   signedIn: false,
-  signUp: false
+  signUp: false,
+  signedInUser: ""
 };
 
 const userReducers = (state = initialState, action) => {
   switch (action.type) {
     // Logout function sets signedIn property in state to false
     case types.LOG_OUT:
-      return { ...state, signedIn: false };
+      return { 
+        ...state, 
+        signedIn: false,
+        signedInUser: ""
+      };
 
     // Event listener for setting sign up to true
     case types.OPEN_SIGNUP_MODAL:
@@ -28,7 +28,11 @@ const userReducers = (state = initialState, action) => {
 
     // Event listener for sign in. Sends a fetch request to post username and password
     case types.SIGN_IN:
-      return { ...state, signedIn: true };
+      return { 
+        ...state, 
+        signedIn: true,
+        signedInUser: action.payload.signedInUser
+      };
 
     // Return state unmodified
     default:

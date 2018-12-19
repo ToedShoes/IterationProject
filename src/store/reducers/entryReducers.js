@@ -53,7 +53,6 @@ const entryReducers = (state = initialState, action) => {
         entryForm: false
       };
     case types.UPDATE_ENTRIES:
-      console.log(action.payload);
       return {
         ...state,
         entriesToRender: action.payload.entries
@@ -92,6 +91,11 @@ const entryReducers = (state = initialState, action) => {
         ...state,
         error: action.payload.error
       };
+    case types.ADD_ENTRY:
+      return {
+        ...state,
+        data: action.payload
+      }
     default:
       return { ...state };
   }

@@ -56,6 +56,11 @@ const invalidateEntries = () => ({
     type: types.INVALIDATE_ENTRIES
 });
 
+const createEntrySuccess = (entrydata) => ({
+    type: types.ADD_ENTRY,
+    payload: {entrydata}
+});
+
 const fetchEntries = function() {
     return dispatch => {
         dispatch(requestEntries());
@@ -64,7 +69,7 @@ const fetchEntries = function() {
             (err) => { console.log('An error occurred.', err) })
             .then((json) => { dispatch(receiveEntries(json)); });
         }
-}
+};
 
 const shouldGetEntries = function(state) {
     const fetching = state.entryReducers.isFetching;
@@ -73,7 +78,7 @@ const shouldGetEntries = function(state) {
     } else {
         return true
     }
-}
+};
 
 const getEntriesIfNeeded = function() {
     return (dispatch, getState) => {
@@ -83,7 +88,28 @@ const getEntriesIfNeeded = function() {
             return Promise.resolve();
         }
     };
-}
+};
+
+const createEntry = function(entryToAdd) {
+    return dispatch => {
+        return fetch("http://localhost:8080/", {
+            method: "POST",
+            body: {
+              term: entryToAdd.term,
+              definition: entryToAdd.definition,
+              createdBy: entryToAdd.user,
+              upvotes: 0,
+              downvotes: 0,
+              tags: []
+            },
+            headers: {
+              "Content-type": "application/json"
+            }
+          })
+          .then((res) => { dispatch(createEntrySuccess(response.data)); },
+            (err) => { console.log('An error occurred.', err) })
+    }
+};
 
 export { addUpvote, 
         addDownvote,
@@ -95,5 +121,6 @@ export { addUpvote,
         requestEntires,
         receiveEntries,
         invalidateEntries,
-        getEntriesIfNeeded
+        getEntriesIfNeeded,
+        createEntry
     };
