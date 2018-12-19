@@ -2,24 +2,32 @@ import React, { Component } from 'react';
 import EntryItem from './EntryItem';
 import { throws } from 'assert';
 import { connect } from 'react-redux';
+import { updateEntries, getEntriesIfNeeded } from '../../store/action_creators/entryActionsCreators';
 
 const mapStateToProps = (state) => ({
-  entriesToRender: state.entriesToRender,
-  signedIn: state.signedIn
-})
+  signedIn: state.userReducers.signedIn,
+  entriesToRender: state.entryReducers.entriesToRender
+});
+
 
 class EntryList extends Component {
   constructor(props) {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.dispatch(getEntriesIfNeeded());
+  }
+
   render() {
     let entries = [];
-    if (this.props.entriesToRender.length > 0) {
+    console.log(this.props.entriesToRender);
+    if (this.props.entriesToRender && this.props.entriesToRender.length > 0) {
       entries = this.props.entriesToRender.map((entry, index) => {
         return <EntryItem
           signedIn={this.props.signedIn}
           entry={entry}
+          key={index}
           // key={`entry-item-${index}`}
           // term={entry.term}
           // definition={entry.definition}
@@ -32,6 +40,14 @@ class EntryList extends Component {
         />
       });
     }
+
+    // console.log(this.props.entriesToRender);
+    // let entries = this.props.entriesToRender.map((entry, index) => {
+    //       return (<EntryItem 
+    //         signedIn={this.props.signedIn}
+    //         entry={entry}/>
+    //       );
+    // });
     return (
       <div>
         {entries}

@@ -53,9 +53,10 @@ const entryReducers = (state = initialState, action) => {
         entryForm: false
       };
     case types.UPDATE_ENTRIES:
+      console.log(action.payload);
       return {
         ...state,
-        entries: action.payload.entries
+        entriesToRender: action.payload.entries
       };
     case types.FILTER_SEARCH_ON_INPUT:
       // Binds search input change to property in state
@@ -72,6 +73,25 @@ const entryReducers = (state = initialState, action) => {
     case types.SHOW_ALL_ENTRIES:
       entriesToRender = state.entries;
       return { ...state, entriesToRender };
+    case types.REQUEST_ENTRIES:
+      return {
+        ...state,
+        isFetching: true,
+        didInvalidate: false,
+        error: null
+      };
+    case types.RECEIEVE_ENTRIES:
+      return {
+        ...state,
+        isFetching: false,
+        didInvalidate: false,
+        entriesToRender: action.payload.entries
+      };
+    case types.INVALIDATE_ENTRIES:
+      return {
+        ...state,
+        error: action.payload.error
+      };
     default:
       return { ...state };
   }

@@ -9,42 +9,44 @@ import { addUpvote, addDownvote, submitEntry, openCreateEntryModal, closeCreateE
 
 const mapStateToProps = (state) => ({
   signedIn: state.signedIn,
-  signUp: state.signUp
-})
+  signUp: state.signUp,
+  entriesToRender: state.entriesToRender
+});
 
 const mapDispatchToProps = (dispatch) => ({
   updateEntries: entries => dispatch(updateEntries(entries))
-})
+});
 
 class PageContent extends Component {
   constructor(props) {
     super(props);
     // this.state = {
+      // entryList: []
     //   term: '',
     //   definition: '',
     //   entryForm: false,
     //   searchValue: '',
-    // }
+    // };
   }
 
   componentDidMount() {
-    fetch("http://localhost:8080/")
-    .then(res => {
-      return res.json();
-    })
-    .then(res => {
-      if(res) {
-        this.props.updateEntries(res)
-        // this.setState({
-        //   entries: res
-        // });
-        console.log(res);
-      }
-    }).catch(err => {
-      console.log("Fetch error. Could not get entries.", err);
-    });
+    // console.log('hello');
+    // fetch("http://localhost:8080/")
+    // .then(res => {
+    //   return res.json();
+    // })
+    // .then(res => {
+    //   if(res) {
+    //     // this.setState({
+    //     //   entries: res
+    //     // });
+    //     console.log(res);
+    //     this.props.updateEntries(res);
+    //   }
+    // }).catch(err => {
+    //   console.log("Fetch error. Could not get entries.", err);
+    // });
   }
-
 
   render() {
     if (this.props.signUp) {
@@ -101,9 +103,9 @@ class PageContent extends Component {
           // handleSearchChange={this.handleSearchChange}
           // handleAllEntries={this.handleAllEntries}
         />
-        {/* <EntryList
-          // entriesToRender={this.state.entriesToRender}
-        /> */}
+        <EntryList
+          entriesToRender={this.props.entriesToRender}
+        />
       </section>
     )
   }
