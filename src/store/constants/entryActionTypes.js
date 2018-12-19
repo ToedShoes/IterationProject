@@ -1,0 +1,10 @@
+// ENTRY ACTIONS
+// Any action types concerning "posts"
+export const ADD_UPVOTE = 'ADD_UPVOTE';
+export const ADD_DOWNVOTE = 'ADD_DOWNVOTE';
+export const SUBMIT_ENTRY = 'SUBMIT_ENTRY';
+export const OPEN_CREATE_ENTRY_MODAL = 'OPEN_CREATE_ENTRY_MODAL';
+export const CLOSE_CREATE_ENTRY_MODAL = 'CLOSE_CREATE_ENTRY_MODAL';
+export const UPDATE_ENTRIES = 'UPDATE_ENTRIES';
+export const FILTER_SEARCH_ON_INPUT = 'FILTER_SEARCH_ON_INPUT';
+export const SHOW_ALL_ENTRIES = 'SHOW_ALL_ENTRIES';

@@ -14,7 +14,6 @@ class CreateEntry extends Component {
           <CreateEntryForm 
             term={this.props.term} 
             definition={this.props.definition} 
-            handleCreateSubmit={this.props.handleCreateSubmit} 
             handleTermChange={this.props.handleTermChange} 
             handleDefinitionChange={this.props.handleDefinitionChange} 
             entries={this.props.entries} 
