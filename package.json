@@ -3,12 +3,6 @@
   "description": "Inventory management app for The College Poster Tour",
   "version": "1.0.0",
   "main": "index.js",
-  "babel": {
-    "presets": [
-      "babel-preset-env",
-      "babel-preset-react"
-    ]
-  },
   "scripts": {
     "webpack": "webpack --mode development",
     "start": "nodemon server/server.js",
@@ -19,11 +13,13 @@
   },
   "author": "Altai Chiang <altai.chiang@gmail.com>",
   "dependencies": {
+    "babel-upgrade": "0.0.24",
     "body-parser": "^1.14.1",
     "clean-webpack-plugin": "^1.0.0",
     "express": "^4.12.3",
     "hamoni-sync": "^1.1.1",
     "html-webpack-plugin": "^3.2.0",
+    "informed": "^1.10.12",
     "isomorphic-fetch": "^2.2.1",
     "mongodb": "^3.1.10",
     "mongoose": "^5.3.16",
@@ -32,11 +28,14 @@
     "react": "^16.2.0",
     "react-dom": "^16.3.1",
     "react-router-dom": "^4.3.1",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
     "request": "^2.88.0",
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": "^3.1.10"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
@@ -51,5 +50,15 @@
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.27.1",
     "webpack-merge": "^4.1.5"
+=======
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0",
+    "react-redux": "^6.0.0",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "webpack": "^4.27.1"
+>>>>>>> implement-redux
   }
 }

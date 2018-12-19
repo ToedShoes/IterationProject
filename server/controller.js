@@ -16,8 +16,8 @@ controller.addEntry = (req, res) => {
     if (err) {
       console.log(err)
     }
-  })
-  res.send(req.body)
+    res.send(req.body);
+  });
 }
 
 controller.getEntries = (req, res) => {
@@ -25,8 +25,6 @@ controller.getEntries = (req, res) => {
     res.send(entries);
   })
 }
-
-
 
 controller.isUser = (req, res) => {
   //some logic to determine if isUser: true
@@ -52,7 +50,7 @@ controller.addUser = (req, res) => {
           console.log(err)
         }
       })
-      res.send({ userAlready: false })
+      res.send({ userAlready: false})
     } else {
       res.send({ userAlready: true })
     }

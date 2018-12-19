@@ -7,27 +7,26 @@ class CreateEntry extends Component {
 }
 
   render() {
-    if (this.props.entryForm) {
+    // if (this.props.entryForm) {
       return (
         <div>
-          <button onClick={this.props.createEntry}>Create Entry</button>
+          {/* <button>Create Entry</button> */}
           <CreateEntryForm 
-            term={this.props.term} 
-            definition={this.props.definition} 
-            handleCreateSubmit={this.props.handleCreateSubmit} 
-            handleTermChange={this.props.handleTermChange} 
-            handleDefinitionChange={this.props.handleDefinitionChange} 
-            entries={this.props.entries} 
-            closeCreateEntry={this.props.closeCreateEntry} 
+            // term={this.props.term} 
+            // definition={this.props.definition} 
+            // handleTermChange={this.props.handleTermChange} 
+            // handleDefinitionChange={this.props.handleDefinitionChange} 
+            // entries={this.props.entries} 
+            // closeCreateEntry={this.props.closeCreateEntry} 
           />
         </div>
-      )
-    }
-    return (
-      <div>
-        <button onClick={this.props.createEntry}>Create Entry</button>
-      </div>
-    )
+      );
+    // }
+    // return (
+    //   <div>
+    //     <button onClick={this.props.createEntry}>Create Entry</button>
+    //   </div>
+    // )
   }
 }
 
