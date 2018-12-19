@@ -25,6 +25,7 @@ class NavFields extends Component {
             value={this.props.passwordValue}
             onChange={this.props.handlePasswordChange}
             id="passwordInput"
+            type="password"
             name="password"
             placeholder="Password..."
           />

@@ -10,7 +10,7 @@ class EntryList extends Component {
   render() {
     let entries = [];
     console.log(this.props.entriesToRender.length);
-    if (this.props.entriesToRender.length > 0) {
+    if (this.props.entriesToRender.length > 0) {      
       entries = this.props.entriesToRender.map((entry, index) => {
         return <EntryItem
           signedIn={this.props.signedIn}
